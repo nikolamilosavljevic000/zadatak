@@ -48,10 +48,10 @@ if (isset($_POST['login'])) {
         array_push($errors, "Password is required");
         
     }
-    if (count($error)== 0) {
+    if (count($errors)== 0) {
         $password = md5($password);
         $query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-        $rusult = mysqli_query ($db,$query);
+        $result = mysqli_query ($db,$query);
         if (mysqli_num_rows($result)== 1) {
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "You are now logged in";
